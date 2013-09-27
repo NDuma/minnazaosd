@@ -34,6 +34,19 @@
 //#define LED_FIND_VALUES
 
 
+#define LED_TIMEOUT		3000
+#define LED_MODE_CHECK		1000
+#define LED_HOME_CHECK		2750
+
+#define LED_MODE_UNKNOWN	0x00
+#define LED_MODE_GOT_HOME_POINT	0x01
+#define LED_MODE_MAN		0x02
+#define LED_MODE_ATT		0x04
+#define LED_MODE_GPS		0x08
+#define LED_MODE_IOC		0x10
+#define LED_MODE_FS		0x20
+
+
 // TODO use ADC2 later, currently analog RSSI pin ADC1 is used
 //#define NAZA_LED_PIN			2			// A2 is pin 25
 #define NAZA_LED_PIN			1			// A1 is pin 24
@@ -43,20 +56,19 @@
 #define REF_VOLTAGE			1.1			// INTERNAL: a built-in reference, equal to 1.1 volts on the ATmega168 or ATmega328
 
 
-//#define NAZA_LED_POS_X			13
-//#define NAZA_LED_POS_Y			0
-#define NAZA_LED_POS_X			(panFMod_XY[0][panel] + 3)
+#define NAZA_LED_POS_X			(panFMod_XY[0][panel] + 1)
 #define NAZA_LED_POS_Y			(panFMod_XY[1][panel])
 
 
-#define NAZA_THRESHOLD_YELLOW		110			// TODO choose the threshold
-#define NAZA_THRESHOLD_RED		 70			// TODO choose the threshold
-#define NAZA_THRESHOLD_GREEN		 30			// TODO choose the threshold
+#define NAZA_THRESHOLD_YELLOW		110			// choose the threshold depending on resistor values
+#define NAZA_THRESHOLD_RED		 70			// choose the threshold depending on resistor values
+#define NAZA_THRESHOLD_GREEN		 30			// choose the threshold depending on resistor values
 
-#define NAZA_CHAR_YELLOW		0xEB			// TODO choose the char
-#define NAZA_CHAR_RED			0xEA			// TODO choose the char
-#define NAZA_CHAR_GREEN			0xEC			// TODO choose the char
-#define NAZA_CHAR_OFF			0x00			// TODO choose the char
+#define NAZA_CHAR_OFF			0x00
+#define NAZA_CHAR_GOT_HOME		0x1F
+#define NAZA_CHAR_YELLOW		0xEB
+#define NAZA_CHAR_RED			0xEA
+#define NAZA_CHAR_GREEN			0xEC
 
 
 void naza_led_init(void);
