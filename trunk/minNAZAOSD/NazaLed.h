@@ -65,7 +65,7 @@
 #define NAZA_THRESHOLD_GREEN		 30			// choose the threshold depending on resistor values
 
 #define NAZA_CHAR_OFF			0x00
-#define NAZA_CHAR_GOT_HOME		0x1F
+#define NAZA_CHAR_GOT_HOME		0xF7
 #define NAZA_CHAR_YELLOW		0xEB
 #define NAZA_CHAR_RED			0xEA
 #define NAZA_CHAR_GREEN			0xEC
