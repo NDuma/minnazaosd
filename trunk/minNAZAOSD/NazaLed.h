@@ -31,12 +31,18 @@
 #define NAZA_LED_H_
 
 
+//#define LED_DEBUG
 //#define LED_FIND_VALUES
 
 
 #define LED_TIMEOUT		3000
 #define LED_MODE_CHECK		1000
 #define LED_HOME_CHECK		2750
+
+#define LED_HOME_CHECK_MIN_CNT	25
+
+#define LED_SAMPLE_TIME		5
+#define LED_SAMPLES		2
 
 #define LED_MODE_UNKNOWN	0x00
 #define LED_MODE_GOT_HOME_POINT	0x01
@@ -56,7 +62,7 @@
 #define REF_VOLTAGE			1.1			// INTERNAL: a built-in reference, equal to 1.1 volts on the ATmega168 or ATmega328
 
 
-#define NAZA_LED_POS_X			(panFMod_XY[0][panel] + 1)
+#define NAZA_LED_POS_X			(panFMod_XY[0][panel] + 4)
 #define NAZA_LED_POS_Y			(panFMod_XY[1][panel])
 
 
