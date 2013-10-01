@@ -27,6 +27,10 @@ TODO:
 #include "PacketRxOk.h"
 #endif
 
+#ifdef NAZA_LED
+#include "NazaLed.h"
+#endif
+
 #if defined (SETUP_VOLT_DIFF_RATIO) || defined (SETUP_AMP_OFFSET) || defined (SETUP_AMP_PER_VOLT)
 #include "PWMRead.h"
 #endif
@@ -741,26 +745,16 @@ void panThr(int first_col, int first_line) {
 // Output : current flight modes
 /******************************************************************/
 void panFlightMode(int first_col, int first_line) {
-    char* mode_str="";
+    char* mode_str="---";
     
     osd.setPanel(first_col, first_line);
     osd.openPanel();
-#if 0
-    if      (osd_mode == FLIGHTSTATUS_FLIGHTMODE_MANUAL         ) mode_str = "man";	// MANUAL
-    else if (osd_mode == FLIGHTSTATUS_FLIGHTMODE_STABILIZED1    ) mode_str = "st1";	// STABILIZED1
-    else if (osd_mode == FLIGHTSTATUS_FLIGHTMODE_STABILIZED2    ) mode_str = "st2";	// STABILIZED2
-    else if (osd_mode == FLIGHTSTATUS_FLIGHTMODE_STABILIZED3    ) mode_str = "st3";	// STABILIZED3
-    else if (osd_mode == FLIGHTSTATUS_FLIGHTMODE_AUTOTUNE       ) mode_str = "at ";	// AUTOTUNE
-    else if (osd_mode == FLIGHTSTATUS_FLIGHTMODE_ALTITUDEHOLD   ) mode_str = "alh";	// ALTITUDEHOLD
-    else if (osd_mode == FLIGHTSTATUS_FLIGHTMODE_ALTITUDEVARIO  ) mode_str = "alv";	// ALTITUDEVARIO
-    else if (osd_mode == FLIGHTSTATUS_FLIGHTMODE_VELOCITYCONTROL) mode_str = "vc ";	// VELOCITYCONTROL
-    else if (osd_mode == FLIGHTSTATUS_FLIGHTMODE_POSITIONHOLD   ) mode_str = "ph ";	// POSITIONHOLD
-    else if (osd_mode == FLIGHTSTATUS_FLIGHTMODE_RETURNTOBASE   ) mode_str = "rtb";	// RETURNTOBASE
-    else if (osd_mode == FLIGHTSTATUS_FLIGHTMODE_LAND           ) mode_str = "lan";	// LAND
-    else if (osd_mode == FLIGHTSTATUS_FLIGHTMODE_PATHPLANNER    ) mode_str = "pp ";	// PATHPLANNER
-    else if (osd_mode == FLIGHTSTATUS_FLIGHTMODE_POI            ) mode_str = "poi";	// POI
-#endif
-    
+         if (osd_mode == LED_MODE_UNKNOWN)	mode_str = "---";
+    else if (osd_mode == LED_MODE_MAN)		mode_str = "man";
+    else if (osd_mode == LED_MODE_ATT)		mode_str = "att";
+    else if (osd_mode == LED_MODE_GPS)		mode_str = "gps";
+    else if (osd_mode == LED_MODE_IOC)		mode_str = "ioc";
+    else if (osd_mode == LED_MODE_FS)		mode_str = "f-s";
     osd.printf("%c%s", 0xE0, mode_str);
     osd.closePanel();
 }

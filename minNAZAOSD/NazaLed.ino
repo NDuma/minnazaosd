@@ -44,7 +44,7 @@ Ziel: Erkennung folgender Modi:
 	GPS	GPS Mode	grün oder grün grün kein gelb
 	IOC	IOC Mode	gelb grün oder gelb grün grün
 	FS 	FailSafe	gelb gelb gelb gelb gelb gelb gelb gelb gelb gelb gelb ... kein grün
-TODO:	'record home point'	ca.3000ms grün grün grün grün grün grün grün grün grün ... kein gelb
+	'record home point'	ca.3000ms grün grün grün grün grün grün grün grün grün ... kein gelb
 
 Umsetzung:
 	- Wenn 3 Sekunden lang kein gelb oder grün		--> MAN
@@ -56,16 +56,16 @@ Umsetzung:
 		gelb = 1 und grün = 1 oder 2			--> IOC
 		gelb > 3					--> FS
 		grün > 3 und ca. 3000ms lang			--> 'record home point' evtl. erkannt
-								    Achtung, kann aber auch 'Aircraft moved, sensor bias too big' sein
-								    --> über extra Timer unterscheiden!
+								    Achtung: kann aber auch 'Aircraft moved, sensor bias too big' sein
+								    --> über extra Abfrage unterscheiden!
 		Timer, Counter etc. auf Null, neue Auswertung
 ----------------------------------------------------------------------------------------------------------------------------------------*/
 uint8_t get_mode(char c)
 {
 	static unsigned long yg_trigger = 0;
-	static unsigned long yg_timeout = 0;
-	static uint8_t y_on = false;
-	static uint8_t g_on = false;
+	static unsigned long yg_timeout = 1;
+	static uint8_t y_on = 0;
+	static uint8_t g_on = 0;
 	static uint8_t y_cnt = 0;
 	static uint8_t g_cnt = 0;
 	static uint8_t home = LED_MODE_UNKNOWN;
@@ -77,24 +77,22 @@ uint8_t get_mode(char c)
 		case NAZA_CHAR_RED:
 		break;
 		case NAZA_CHAR_YELLOW:
-			if (!yg_trigger) yg_trigger = curr_ms;
-			if (!y_on) {
+			if (++y_on == LED_SAMPLES) {
+				if (!yg_trigger) yg_trigger = curr_ms;
 				yg_timeout = curr_ms;
 				y_cnt++;
-				y_on = true;
 			}
 		break;
 		case NAZA_CHAR_GREEN:
-			if (!yg_trigger) yg_trigger = curr_ms;
-			if (!g_on) {
+			if (++g_on == LED_SAMPLES) {
+				if (!yg_trigger) yg_trigger = curr_ms;
 				yg_timeout = curr_ms;
 				g_cnt++;
-				g_on = true;
 			}
 		break;
 		case NAZA_CHAR_OFF:
-			y_on = false;
-			g_on = false;
+			y_on = 0;
+			g_on = 0;
 			
 			if (yg_timeout && curr_ms - yg_timeout > LED_TIMEOUT) {
 				mode = LED_MODE_MAN;
@@ -106,11 +104,17 @@ uint8_t get_mode(char c)
 			if (yg_trigger && curr_ms - yg_trigger > LED_MODE_CHECK) {
 				if (y_cnt >= 1 && y_cnt <= 2 && g_cnt == 0)	mode = LED_MODE_ATT;
 				if (y_cnt == 0 && g_cnt >= 1 && g_cnt <= 2)	mode = LED_MODE_GPS;
-			// TODO	if (y_cnt == 1 && g_cnt >= 1 && g_cnt <= 2)	mode = LED_MODE_IOC;
+				if (y_cnt == 1 && g_cnt >= 1 && g_cnt <= 2)	mode = LED_MODE_IOC;
 				if (y_cnt >  3 && g_cnt == 0)			mode = LED_MODE_FS;
-				if (y_cnt == 0 && g_cnt >  3) {
+				if (y_cnt == 0 && g_cnt >  6) {			// maybe we are getting home point, check further
 					if (yg_trigger && curr_ms - yg_trigger > LED_HOME_CHECK) {
-						home = LED_MODE_GOT_HOME_POINT;
+#ifdef LED_DEBUG
+						osd.setPanel(0, 1);
+						osd.openPanel();
+						osd.printf("%3u", g_cnt);
+						osd.closePanel();
+#endif
+						if (g_cnt > LED_HOME_CHECK_MIN_CNT) home = LED_MODE_GOT_HOME_POINT;
 						yg_trigger = 0;
 						y_cnt = 0;
 						g_cnt = 0;
@@ -142,29 +146,28 @@ char naza_led_char(void)
 void naza_led_show(int first_col, int first_line)
 {
 #ifdef LED_FIND_VALUES
-	osd.setPanel(first_col-1, first_line);
+	osd.setPanel(first_col, first_line);
 	osd.openPanel();
 	osd.printf("%4u", analogRead(NAZA_LED_PIN));
 	osd.closePanel();
 #else
-	static uint8_t old_mode = LED_MODE_UNKNOWN;
-	static char* mode_str="---";
-	char led = naza_led_char();
-	uint8_t mode = get_mode(led);
+	static unsigned long sample_timer = 0;
+	static char old_led = NAZA_CHAR_OFF;
+	char led;
+	uint8_t mode;
 	
-	if (old_mode != mode) {
-		old_mode = mode;
-		mode = mode & ~LED_MODE_GOT_HOME_POINT;
-		     if (mode == LED_MODE_UNKNOWN)	mode_str = "---";
-		else if (mode == LED_MODE_MAN)		mode_str = "man";
-		else if (mode == LED_MODE_ATT)		mode_str = "att";
-		else if (mode == LED_MODE_GPS)		mode_str = "gps";
-		else if (mode == LED_MODE_IOC)		mode_str = "ioc";
-		else if (mode == LED_MODE_FS)		mode_str = "f-s";
+	if (millis() - sample_timer < LED_SAMPLE_TIME) return;
+	sample_timer = millis();
+	led = naza_led_char();
+	mode = get_mode(led);
+	osd_mode = mode & ~LED_MODE_GOT_HOME_POINT;
+	
+	if (old_led != led) {
+		old_led = led;
+		osd.setPanel(first_col, first_line);
+		osd.openPanel();
+		osd.printf("%c", led == NAZA_CHAR_OFF && mode & LED_MODE_GOT_HOME_POINT ? NAZA_CHAR_GOT_HOME : led);
+		osd.closePanel();
 	}
-	osd.setPanel(first_col, first_line);
-	osd.openPanel();
-	osd.printf("%s%c", mode_str, led == NAZA_CHAR_OFF && old_mode & LED_MODE_GOT_HOME_POINT ? NAZA_CHAR_GOT_HOME : led);
-	osd.closePanel();
 #endif
 }

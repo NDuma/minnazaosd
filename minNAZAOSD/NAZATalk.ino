@@ -64,8 +64,8 @@ TinyGPS gps;
 //	active LED symbol			ok	3 resistors + 1 ADC
 //
 //  stage 2b	advanced soldering	solder 2 cables at Atmel 328P pin and up to 4 resistors and use voltage/current sensor
-//	battery voltage				TOTEST	2 resistors + 1 ADC		calib needs to be tested
-//	battery current				TOTEST	2 resistors + 1 ADC		calib needs to be tested
+//	battery voltage				ok	2 resistors + 1 ADC
+//	battery current				ok	2 resistors + 1 ADC
 //
 //  stage 2c	advanced soldering	solder 1 cable at Atmel 328P pin and 2 resistors
 //	analog RSSI				ok	2 resistors + 1 ADC
@@ -104,21 +104,13 @@ int nazatalk_read(void) {
 		osd_chan8_raw	= 1100;
 	}
 	
-#ifdef NAZA_LED
-	naza_led_show(NAZA_LED_POS_X, NAZA_LED_POS_Y);
-#endif
-	
-#ifdef NAZA_INT	// TOTEST
-	osd_roll	= naza_roll_get();
-	osd_pitch	= naza_pitch_get();
-	osd_throttle	= naza_throttle_get();
-	ch_toggle	= 6;
-	osd_chan6_raw	= naza_screenswitch_get();
-#endif
-	
 	// grabbing data
 	while (Serial.available() > 0) {
 		uint8_t c = Serial.read();
+	
+#ifdef NAZA_LED
+		naza_led_show(NAZA_LED_POS_X, NAZA_LED_POS_Y);
+#endif
 		
 		// needed for MinimOSD char set upload
 		if (!gps_seen && millis() < 20000 && millis() > 5000) {
@@ -143,7 +135,6 @@ int nazatalk_read(void) {
 			osd_heading 		= get_ubx_heading();
 			osd_groundspeed 	= get_ubx_groundspeed();
 			osd_climb		= -1.0 * get_ubx_down();
-			//ret = 1;
 		}
 #endif
 
@@ -171,11 +162,21 @@ int nazatalk_read(void) {
 			osd_alt			= gps.f_altitude();
 			osd_groundspeed 	= gps.f_speed_mps();
 			//osd_climb		= 0;				// TODO not implemented yet
-			
-			ret = 1;
 		}
 #endif
 	}
+	
+#ifdef NAZA_LED
+	naza_led_show(NAZA_LED_POS_X, NAZA_LED_POS_Y);
+#endif
+	
+#ifdef NAZA_INT	// TOTEST
+	osd_roll	= naza_roll_get();
+	osd_pitch	= naza_pitch_get();
+	osd_throttle	= naza_throttle_get();
+	ch_toggle	= 6;
+	osd_chan6_raw	= naza_screenswitch_get();
+#endif
 	
         return ret;
 }
