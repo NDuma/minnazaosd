@@ -37,16 +37,16 @@
 #define FLIGHT_BATT_ON_MINIMOSD
 
 // JRChange: PacketRxOk on MinimOSD:
-#define PACKETRXOK_ON_MINIMOSD
+//#define PACKETRXOK_ON_MINIMOSD
 
 // Amedee: Analog RSSI on MinimOSD:
-//#define ANALOG_RSSI_ON_MINIMOSD
+#define ANALOG_RSSI_ON_MINIMOSD
 
 // JRChange: show_radar
 #define SHOW_RADAR
 
 // JRChange: JR specials
-#define JR_SPECIALS
+//#define JR_SPECIALS
 
 // JRChange: GPS simulation
 //#define GPS_SIMULATION
