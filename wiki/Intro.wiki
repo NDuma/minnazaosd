@@ -2,7 +2,7 @@
 
 = Introduction =
 
-minNAZAOSD runs on the cheap (about 20$) MinimOSD hardware and realizes an OSD for the NAZA M V1/V2/light flight controller with NAZA GPS.
+minNAZAOSD runs on the cheap (about 20$) MinimOSD hardware and realizes an OSD for the NAZA M V1/V2/light flight-controller with NAZA GPS.
 
 This project is GNU GPL v3 and using it is at your own risk.
 
@@ -36,7 +36,7 @@ and on the ArduCamOSD code: http://code.google.com/p/arducam-osd/
 
 By the way:
 
-When using it with only a GPS connected (UBX tested, NMEA not tested) it's usable as a cheap standalone OSD independent of the flight-control or kind of UAV...
+When using it with only a GPS connected (UBX tested, NMEA not tested) it's usable as a cheap standalone OSD independent of the flight-controller or kind of UAV...
 
 Attach voltage/current sensor and/or RSSI and get these features also...
 
