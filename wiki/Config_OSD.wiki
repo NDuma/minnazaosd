@@ -1,6 +1,8 @@
 = How to config OSD =
 
 
-The only thing you can configure for minRXOSD with the 'OSD Config Tool' is the video standard you like to use.
+You can configure some things with the 'OSD Config Tool'.
 
-How to do so is explained here: http://code.google.com/p/arducam-osd/wiki/Cfg_Standard
+How to do so is explained here: http://code.google.com/p/arducam-osd/wiki/OSD_Config_Tool
+
+Get the config tool from my code section trunk/Tools
