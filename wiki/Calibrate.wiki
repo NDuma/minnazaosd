@@ -1,4 +1,27 @@
 = How to calibrate voltage/current measurement =
 
 
-Description will follow.
+As the software realization for the screenswitch and throttle is not ready yet, you need a temporary way to calibrate the voltage/current measurement.
+
+----
+
+You need to solder one additional cable at the bottom of the minNAZAOSD as shown here:
+
+http://minnazaosd.googlecode.com/svn/wiki/images/004_minNAZAOSD_ConnectionsBottom.jpg
+
+Connect this to the signal pin of a free channel at your RC-RX.
+
+----
+
+Then you need 3 different hex files to calibrate the voltage, the current offset and the current itself.
+
+To generate these 3 hex files go to the file OSD_Config.h and uncomment the following #defines step by step but only one per step to generate the 3 different hex files.
+
+// to generate the three needed calibration software versions
+//#define SETUP_VOLT_DIFF_RATIO
+//#define SETUP_AMP_OFFSET
+//#define SETUP_AMP_PER_VOLT
+
+----
+
+After that load the needed hex for calibrating the thing you like.
