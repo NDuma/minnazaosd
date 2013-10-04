@@ -27,4 +27,8 @@ To generate these 3 hex files go to the file OSD_Config.h and uncomment the foll
 
 ----
 
-After that load the needed hex for calibrating the voltage, the current offset and the current itself step by step.
+After that, load the needed hex for calibrating the voltage, the current offset and the current itself step by step.
+
+----
+
+Don't forget to load a hex file compiled with all three options disabled after calibration is ready.
