@@ -36,7 +36,7 @@ http://minnazaosd.googlecode.com/svn/wiki/images/012_GPS_adaptor_cable.jpg
 
 Connection is done like shown in the following pictures:
 
-(shown without the LED adaptor and without the minNAZAOSD soldering for simplicity)
+(shown without the LED adaptor and minNAZAOSD soldering, described in the next chapter, for simplicity)
 
 http://minnazaosd.googlecode.com/svn/wiki/images/013_GPS_adaptor_connected_001.jpg
 
