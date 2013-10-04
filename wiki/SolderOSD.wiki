@@ -24,7 +24,7 @@ http://minnazaosd.googlecode.com/svn/wiki/images/002_MinimOSD_back_soldered.JPG
 
 The following is the hardest stuff to do for this OSD.
 
-Only do this if you have some soldering skills.
+Only do this if you have some very good soldering skills.
 
 Also only do this if you have the knowledge of what you are doing. 
 
