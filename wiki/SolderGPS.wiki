@@ -1,0 +1,51 @@
+= How to solder the GPS =
+
+----
+
+Remember: This project is GNU GPL v3 and using it is at your own risk.
+
+----
+
+For using the NAZA GPS you have to solder one wire to it.
+
+There are some descriptions and videos on the web how to do it, so here I only show some pictures as an abstract.
+
+----
+
+First open the GPS with a Torx T5 bit:
+
+http://minnazaosd.googlecode.com/svn/wiki/images/010_GPS_opened.jpg
+
+----
+
+Then carefully solder the cable:
+
+http://minnazaosd.googlecode.com/svn/wiki/images/011_GPS_soldered.jpg
+
+You need a little notch to let the cable out of the GPS.
+
+After that close and screw the GPS.
+
+----
+
+For connecting the GPS data wire to the minNAZAOSD and to power it you have to solder an adaptor cable as shown here:
+
+http://minnazaosd.googlecode.com/svn/wiki/images/012_GPS_adaptor_cable.jpg
+
+----
+
+Connection is done like shown in the following pictures:
+
+(shown without the LED adaptor for simplicity)
+
+http://minnazaosd.googlecode.com/svn/wiki/images/013_GPS_adaptor_connected_001.jpg
+
+http://minnazaosd.googlecode.com/svn/wiki/images/014_GPS_adaptor_connected_002.jpg
+
+http://minnazaosd.googlecode.com/svn/wiki/images/015_GPS_adaptor_connected_003.jpg
+
+----
+
+An overview:
+
+http://minnazaosd.googlecode.com/svn/wiki/images/016_overview.jpg

@@ -1,0 +1,58 @@
+= How to solder the OSD =
+
+----
+
+Remember: This project is GNU GPL v3 and using it is at your own risk.
+
+----
+
+Since I own the old version V0.1 of the MinimOSD with the heating problem, I first of all desoldered the capacitor to isolate the 12V from the OSD and powered it from the 5V side.
+
+In the following two pictures you can see how to do so.
+
+Shown above is a unsoldered MinimOSD and below a soldered MinimOSD.
+
+Desolder the capacitor (red rectangle) to isolate the 12V from the OSD.
+
+Solder the two solder jumper (green rectangles) to powered the MAX7456 chip from the 5V side.
+
+http://minnazaosd.googlecode.com/svn/wiki/images/001_MinimOSD_front_soldered.JPG
+
+http://minnazaosd.googlecode.com/svn/wiki/images/002_MinimOSD_back_soldered.JPG
+
+----
+
+The following is the hardest stuff to do for this OSD.
+
+Only do this if you have some soldering skills.
+
+Also only do this if you have the knowledge of what you are doing. 
+
+For connecting the LED adaptor, the RSSI, the voltage/current sensor and the things for the artificial horizon, screen switching and throttle percentage you have to solder the things shown in blue in the following diagramm:
+
+http://minnazaosd.googlecode.com/svn/wiki/images/003_minNAZAOSD_ConnectionsTop.jpg
+
+----
+
+The rest is not that hard.
+
+The LED adaptor soldered:
+
+http://minnazaosd.googlecode.com/svn/wiki/images/005_LED_adaptor_001.jpg
+
+----
+
+The LED adaptor heatshrinked:
+
+http://minnazaosd.googlecode.com/svn/wiki/images/006_LED_adaptor_002.jpg
+
+http://minnazaosd.googlecode.com/svn/wiki/images/007_LED_adaptor_003.jpg
+
+http://minnazaosd.googlecode.com/svn/wiki/images/008_LED_adaptor_004.jpg
+
+----
+
+The LED adaptor connected:
+
+http://minnazaosd.googlecode.com/svn/wiki/images/009_LED_adaptor_005.jpg
+
