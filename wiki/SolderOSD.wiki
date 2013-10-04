@@ -32,6 +32,8 @@ For connecting the LED adaptor, the RSSI, the voltage/current sensor and the thi
 
 http://minnazaosd.googlecode.com/svn/wiki/images/003_minNAZAOSD_ConnectionsTop.jpg
 
+The software realization for the gimbal F1/F2, screenswitch and throttle is not ready yet and it's currently not proven for functionality!
+
 ----
 
 The rest is not that hard.
