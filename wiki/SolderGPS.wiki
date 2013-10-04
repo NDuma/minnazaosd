@@ -28,7 +28,7 @@ After that close and screw the GPS.
 
 ----
 
-For connecting the GPS data wire to the minNAZAOSD and to power it you have to solder an adaptor cable as shown here:
+For connecting the GPS data wire to the OSD and to power the OSD you have to solder an adaptor cable as shown here:
 
 http://minnazaosd.googlecode.com/svn/wiki/images/012_GPS_adaptor_cable.jpg
 
@@ -43,6 +43,8 @@ http://minnazaosd.googlecode.com/svn/wiki/images/013_GPS_adaptor_connected_001.j
 http://minnazaosd.googlecode.com/svn/wiki/images/014_GPS_adaptor_connected_002.jpg
 
 http://minnazaosd.googlecode.com/svn/wiki/images/015_GPS_adaptor_connected_003.jpg
+
+As you can see in this pictures, the minNAZAOSD is powered through the NAZA +5V and GND (red and brown cables) and the GPS data is feeded by the third cable.
 
 ----
 
