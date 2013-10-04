@@ -28,7 +28,7 @@ Only do this if you have some very good soldering skills.
 
 Also only do this if you have the knowledge of what you are doing. 
 
-For connecting the LED adaptor, the RSSI, the voltage/current sensor and the things for the artificial horizon, screen switching and throttle percentage you have to solder the things shown in blue in the following diagramm:
+For connecting the LED adaptor, the RSSI, the voltage/current sensor and the things for the artificial horizon, screen switching and throttle percentage you have to solder the things shown in blue in the following diagram:
 
 http://minnazaosd.googlecode.com/svn/wiki/images/003_minNAZAOSD_ConnectionsTop.jpg
 
@@ -57,4 +57,3 @@ http://minnazaosd.googlecode.com/svn/wiki/images/008_LED_adaptor_004.jpg
 The LED adaptor connected:
 
 http://minnazaosd.googlecode.com/svn/wiki/images/009_LED_adaptor_005.jpg
-
