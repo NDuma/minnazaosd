@@ -48,6 +48,6 @@ As you can see in this pictures, the minNAZAOSD is powered through the NAZA +5V 
 
 ----
 
-An connection overview:
+Connection overview:
 
 http://minnazaosd.googlecode.com/svn/wiki/images/016_overview.jpg

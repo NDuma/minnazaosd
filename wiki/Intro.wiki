@@ -34,4 +34,14 @@ and on the ArduCamOSD code: http://code.google.com/p/arducam-osd/
 
 ----
 
+By the way:
+
+When using it with only a GPS connected (UBX tested, NMEA not tested) it's usable as a cheap standalone OSD independent of the flight-control or kind of UAV...
+
+Attach voltage/current sensor and/or RSSI and get these features also...
+
+Got it?
+
+----
+
 Have fun
