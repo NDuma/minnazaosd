@@ -53,11 +53,9 @@
 #define LED_MODE_FS		0x20
 
 
-// TODO use ADC2 later, currently analog RSSI pin ADC1 is used
-//#define NAZA_LED_PIN			2			// A2 is pin 25
-#define NAZA_LED_PIN			1			// A1 is pin 24
-								// Any 'free' analog input will do -- A0-5 are available, 
-								// which are pins 23-28 on the ATmega328p
+//#define NAZA_LED_PIN			1			// ADC1 is pin 24
+#define NAZA_LED_PIN			2			// ADC2 is pin 25
+
 
 #define REF_VOLTAGE			1.1			// INTERNAL: a built-in reference, equal to 1.1 volts on the ATmega168 or ATmega328
 
@@ -65,10 +63,17 @@
 #define NAZA_LED_POS_X			(panFMod_XY[0][panel] + 4)
 #define NAZA_LED_POS_Y			(panFMod_XY[1][panel])
 
+#if 0	// for version with additional 10k/4k7 voltage divider
+#define NAZA_THRESHOLD_YELLOW		110
+#define NAZA_THRESHOLD_RED		 70
+#define NAZA_THRESHOLD_GREEN		 30
+#endif
 
-#define NAZA_THRESHOLD_YELLOW		110			// choose the threshold depending on resistor values
-#define NAZA_THRESHOLD_RED		 70			// choose the threshold depending on resistor values
-#define NAZA_THRESHOLD_GREEN		 30			// choose the threshold depending on resistor values
+#if 1
+#define NAZA_THRESHOLD_YELLOW		345
+#define NAZA_THRESHOLD_RED		220
+#define NAZA_THRESHOLD_GREEN		 95
+#endif
 
 #define NAZA_CHAR_OFF			0x00
 #define NAZA_CHAR_GOT_HOME		0xF7
