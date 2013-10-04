@@ -10,11 +10,11 @@ For using the NAZA GPS you have to solder one wire to it.
 
 There are some descriptions and videos on the web how to do it, so here I only show some pictures as an abstract.
 
-Doing this soldering will void your warranty for your GPS!
+Doing this manipulations will void your warranty for your GPS!
 
 ----
 
-First open the GPS with a Torx T5 bit:
+First open the GPS using a Torx T5 bit:
 
 http://minnazaosd.googlecode.com/svn/wiki/images/010_GPS_opened.jpg
 
@@ -26,7 +26,7 @@ http://minnazaosd.googlecode.com/svn/wiki/images/011_GPS_soldered.jpg
 
 You need a little notch to let the cable out of the GPS.
 
-After that close and screw the GPS.
+After that close the GPS.
 
 ----
 
