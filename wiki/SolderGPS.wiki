@@ -10,6 +10,8 @@ For using the NAZA GPS you have to solder one wire to it.
 
 There are some descriptions and videos on the web how to do it, so here I only show some pictures as an abstract.
 
+Doing this soldering will void your warranty for your GPS!
+
 ----
 
 First open the GPS with a Torx T5 bit:
