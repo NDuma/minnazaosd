@@ -2,8 +2,8 @@
 
 * [Intro Introduction]
 
-  * [SolderOSD How to solder the OSD]
   * [SolderGPS How to solder the GPS]
+  * [SolderOSD How to solder the OSD]
   * [Compiling How to compile the code]
   * [Loading How to load the char file]
   * [Config_OSD How to configure the OSD]
