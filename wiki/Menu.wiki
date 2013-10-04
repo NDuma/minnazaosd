@@ -7,5 +7,5 @@
   * [Compiling How to compile the code]
   * [Loading How to load the char file]
   * [Config_OSD How to configure the OSD]
-  * [Config_Gimbal How to configure the gimbal]
   * [Calibrate How to calibrate]
+  * [Config_Gimbal How to configure AH]
