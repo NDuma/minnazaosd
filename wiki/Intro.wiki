@@ -2,7 +2,7 @@
 
 = Introduction =
 
-minNAZAOSD runs on the cheap (about 20$) MinimOSD hardware and realizes an OSD for the NAZA M V1/V2/light flight-controller with NAZA GPS.
+minNAZAOSD runs on the cheap (about 20$) MinimOSD hardware and realizes an OSD for the NAZA M V1/V2/Lite flight-controller with NAZA GPS.
 
 This project is GNU GPL v3 and using it is at your own risk.
 
