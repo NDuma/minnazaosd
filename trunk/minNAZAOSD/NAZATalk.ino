@@ -29,6 +29,12 @@
 #include "NAZATalk.h"
 
 
+#ifdef GPS_PROTOCOL_DJI
+// see http://www.rcgroups.com/forums/showthread.php?t=1995704
+#include "GPS_DJI.h"
+#endif
+
+
 #ifdef GPS_PROTOCOL_UBX
 // see http://openpilot.org
 #include "GPS_UBX.h"
@@ -36,7 +42,6 @@
 
 
 #ifdef GPS_PROTOCOL_NMEA
-// untested !!!
 // see http://arduiniana.org/libraries/tinygps/
 #include <TinyGPS.h>
 TinyGPS gps;
@@ -123,6 +128,20 @@ int nazatalk_read(void) {
 				uploadFont();
 			}
 		}
+		
+#ifdef GPS_PROTOCOL_DJI
+		if (parse_dji(c) == PARSER_COMPLETE_SET) {
+			gps_seen = 1;
+			osd_fix_type		= get_dji_status();
+			osd_satellites_visible	= get_dji_satellites();
+			osd_lat			= get_dji_latitude();
+			osd_lon			= get_dji_longitude();
+			osd_alt			= get_dji_altitude();
+			osd_heading 		= get_dji_heading();
+			osd_groundspeed 	= get_dji_groundspeed();
+			osd_climb		= -1.0 * get_dji_down();
+		}
+#endif
 		
 #ifdef GPS_PROTOCOL_UBX
 		if (parse_ubx(c) == PARSER_COMPLETE_SET) {

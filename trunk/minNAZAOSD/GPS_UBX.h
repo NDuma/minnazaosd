@@ -24,6 +24,9 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
+ 
+
+#ifdef GPS_PROTOCOL_UBX
 
 #ifndef GPS_UBX_H
 #define GPS_UBX_H
@@ -247,3 +250,5 @@ float get_ubx_groundspeed(void);
 float get_ubx_down(void);
 
 #endif /* GPS_UBX_H */
+
+#endif // GPS_PROTOCOL_UBX
