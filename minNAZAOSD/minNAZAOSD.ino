@@ -107,7 +107,11 @@ along with this program. If not, see <http://www.gnu.org/licenses/>
 //#define ArduCAM328
 #define MinimOSD
 
+#ifdef GPS_PROTOCOL_DJI
+#define TELEMETRY_SPEED  115200 // How fast our data is coming to serial port
+#else
 #define TELEMETRY_SPEED  57600  // How fast our data is coming to serial port
+#endif
 
 #ifdef USE_WITH_MINRXOSD
 #define BOOTTIME         8000   // Time in milliseconds that we show boot loading bar and wait user input

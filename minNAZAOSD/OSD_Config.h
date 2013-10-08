@@ -19,6 +19,11 @@
 // JRChange: DJI NazaTalk:
 #define PROTOCOL_NAZATALK
 
+// JRChange: GPS protocol DJI:
+// ground tested but not in flight because of weather conditions !!!
+// heading needs some work !!!
+//#define GPS_PROTOCOL_DJI
+
 // JRChange: GPS protocol UBX:
 #define GPS_PROTOCOL_UBX
 
