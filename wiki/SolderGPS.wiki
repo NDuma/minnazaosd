@@ -1,8 +1,63 @@
-= How to solder the GPS =
+= How to connect the GPS =
 
 ----
 
 Remember: This project is GNU GPL v3 and using it is at your own risk.
+
+----
+
+With the findings of a guy from Polska, user pawelsky, it is now easy to connect the NAZA GPS to the MinimOSD.
+
+No soldering at the NAZA GPS is necessary anymore, only an easy adaptor is needed, and some code of course.
+
+
+See his findings here:
+
+http://www.rcgroups.com/forums/showthread.php?t=1995704
+
+
+I adapted his findings to my GPD_DJI parser code and you can use it by commenting/uncommenting as in the following in the OSD_Config.h file:
+
+#define GPS_PROTOCOL_DJI
+
+//#define GPS_PROTOCOL_UBX
+
+
+Currently the heading is not tested and because of bad weather conditions no flight tests have been done.
+
+
+You can solder the adaptor like this:
+
+http://minnazaosd.googlecode.com/svn/wiki/images/GPSAdaptor_001.jpg
+
+http://minnazaosd.googlecode.com/svn/wiki/images/GPSAdaptor_002.jpg
+
+http://minnazaosd.googlecode.com/svn/wiki/images/GPSAdaptor_003.jpg
+
+http://minnazaosd.googlecode.com/svn/wiki/images/GPSAdaptor_004.jpg
+
+http://minnazaosd.googlecode.com/svn/wiki/images/GPSAdaptor_005.jpg
+
+http://minnazaosd.googlecode.com/svn/wiki/images/GPSAdaptor_006.jpg
+
+
+But don't forget to isolate the 4 contacts using e.g. PlastiDip and heatshrink it after that!
+
+----
+
+----
+
+----
+
+For legacy reasons here is the description how to solder directly at the NAZA GPS.
+
+No don't need this with the new version described above!
+
+If you liek to try this, then you have to commenting/uncommenting as in the following in the OSD_Config.h file:
+
+//#define GPS_PROTOCOL_DJI
+
+#define GPS_PROTOCOL_UBX
 
 ----
 

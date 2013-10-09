@@ -2,7 +2,8 @@
 
 * [Intro Introduction]
 
-  * [SolderGPS How to solder the GPS]
+  * [Stages The stages to success]
+  * [SolderGPS How to connect the GPS]
   * [SolderOSD How to solder the OSD]
   * [Compiling How to compile the code]
   * [Loading How to load the char file]
