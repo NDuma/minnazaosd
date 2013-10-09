@@ -79,13 +79,13 @@ void parse_dji_gps(struct DJI_GPS *gps)
         }
 
 	GPSValues.Satellites	= gps->numSV;
-	GPSValues.Latitude	= (float)decodeLong((byte*)&gps->lat, mask) / 10000000.0;
-	GPSValues.Longitude	= (float)decodeLong((byte*)&gps->lon, mask) / 10000000.0;
-	GPSValues.Altitude	= (float)decodeLong((byte*)&gps->hMSL, mask) * 0.001f;
-	GPSValues.Down		= (float)decodeLong((byte*)&gps->velD, mask) / 100.0f;
+	GPSValues.Latitude	= (float)decodeLong((byte*)&gps->lat,  mask) / 10000000.0;
+	GPSValues.Longitude	= (float)decodeLong((byte*)&gps->lon,  mask) / 10000000.0;
+	GPSValues.Altitude	= (float)decodeLong((byte*)&gps->hMSL, mask) / 1000.0;
+	GPSValues.Down		= (float)decodeLong((byte*)&gps->velD, mask) / 100.0;
 	
-	float velN		= (float)decodeLong((byte*)&gps->velN, mask) / 100.0f;
-	float velE		= (float)decodeLong((byte*)&gps->velE, mask) / 100.0f;
+	float velN		= (float)decodeLong((byte*)&gps->velN, mask) / 100.0;
+	float velE		= (float)decodeLong((byte*)&gps->velE, mask) / 100.0;
 	
 	// calculate groundspeed
 	GPSValues.Groundspeed	= sqrt(velN * velN + velE * velE);
@@ -99,17 +99,13 @@ void parse_dji_gps(struct DJI_GPS *gps)
 }
 
 
-// TODO not correctly working yet
 void parse_dji_mag(struct DJI_MAG *mag)
 {
 #ifdef DJI_HEADING_FROM_MAG
 	int mask = mag->mask;
 	
-	short x = decodeShort((byte*)&mag->magX, mask);
-	x ^= 0x0100;
-	
-	short y = decodeShort((byte*)&mag->magY, mask);
-	y ^= 0x0100;
+	short x = decodeShort((byte*)&mag->magX, mask) ^ 0x0100;
+	short y = decodeShort((byte*)&mag->magY, mask) ^ 0x0100;
 	
 	float heading = -atan2(y, x) * 180.0 / M_PI;
 	if (heading < 0.0) heading += 360.0;
@@ -138,6 +134,7 @@ void parse_dji_message(struct DJIPacket *dji)
 }
 
 
+// CRC check
 bool checksum_dji_message(struct DJIPacket *dji)
 {
     int i;
