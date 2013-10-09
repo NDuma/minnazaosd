@@ -31,7 +31,7 @@
 #define GPS_DJI_H
 
 
-//#define DJI_HEADING_FROM_MAG
+//#define DJI_HEADING_FROM_MAG	// TODO needs further testing
 
 
 #define DJI_SYNC1	0x55  // DJI protocol synchronization characters
@@ -107,7 +107,7 @@ struct DJI_GPS {
     uint16_t vDOP;		// Vertical DOP
     uint16_t nDOP;		// Northing DOP
     uint16_t eDOP;		// Easting DOP
-    uint8_t  numSV;		// Number of SVs used in Nav Solution
+    uint8_t  numSV;		// Number of SVs used in Nav Solution (not XORed)
     uint8_t  uk02;		// ??? (seems to be always 0)
     uint8_t  gpsFix;		// GPS fix type
     uint8_t  uk03;		// ??? (seems to be always 0)
