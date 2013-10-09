@@ -41,7 +41,7 @@ http://minnazaosd.googlecode.com/svn/wiki/images/GPSAdaptor_005.jpg
 http://minnazaosd.googlecode.com/svn/wiki/images/GPSAdaptor_006.jpg
 
 
-But don't forget to insulating the 4 contacts using e.g. PlastiDip and heatshrink the adaptor after that!
+But don't forget to insulate the 4 contacts using e.g. PlastiDip and heatshrink the adaptor after that!
 
 ----
 
@@ -53,7 +53,7 @@ For legacy reasons here is the description how to solder directly at the NAZA GP
 
 You don't need this with the new version described above!
 
-If you like to try this, then you have to commenting/uncommenting as in the following in the OSD_Config.h file:
+If you like to try this anyway, then you have to commenting/uncommenting as in the following in the OSD_Config.h file:
 
 //#define GPS_PROTOCOL_DJI
 
