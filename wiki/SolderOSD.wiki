@@ -22,7 +22,7 @@ http://minnazaosd.googlecode.com/svn/wiki/images/002_MinimOSD_back_soldered.JPG
 
 ----
 
-The LED adaptor is not that hard.
+The LED adaptor soldering is easy.
 
 The LED adaptor soldered:
 
