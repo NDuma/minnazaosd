@@ -6,6 +6,8 @@ There are 3 different possible stages for this OSD:
  * easy
  * advanced
  * insane
+ 
+Just choose the stage you like and have fun.
 
 ----
 

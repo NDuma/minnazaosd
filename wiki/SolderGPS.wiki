@@ -16,7 +16,7 @@ See his findings here:
 http://www.rcgroups.com/forums/showthread.php?t=1995704
 
 
-I adapted his findings to my GPD_DJI parser code and you can use it by commenting/uncommenting as in the following in the OSD_Config.h file:
+I adapted his findings to my GPS_DJI parser code and you can use it by commenting/uncommenting as in the following in the OSD_Config.h file:
 
 #define GPS_PROTOCOL_DJI
 
@@ -41,7 +41,7 @@ http://minnazaosd.googlecode.com/svn/wiki/images/GPSAdaptor_005.jpg
 http://minnazaosd.googlecode.com/svn/wiki/images/GPSAdaptor_006.jpg
 
 
-But don't forget to isolate the 4 contacts using e.g. PlastiDip and heatshrink it after that!
+But don't forget to insulating the 4 contacts using e.g. PlastiDip and heatshrink the adaptor after that!
 
 ----
 
@@ -51,9 +51,9 @@ But don't forget to isolate the 4 contacts using e.g. PlastiDip and heatshrink i
 
 For legacy reasons here is the description how to solder directly at the NAZA GPS.
 
-No don't need this with the new version described above!
+You don't need this with the new version described above!
 
-If you liek to try this, then you have to commenting/uncommenting as in the following in the OSD_Config.h file:
+If you like to try this, then you have to commenting/uncommenting as in the following in the OSD_Config.h file:
 
 //#define GPS_PROTOCOL_DJI
 

@@ -24,6 +24,10 @@ http://minnazaosd.googlecode.com/svn/wiki/images/002_MinimOSD_back_soldered.JPG
 
 The following is the hardest stuff to do for this OSD.
 
+Shown here is the insane version of the minNAZAOSD.
+
+Just decide which version you like and then only do the necessary or none soldering for your choice.
+
 Only do this if you have some very good soldering skills.
 
 Also only do this if you have the knowledge of what you are doing. 
