@@ -6,7 +6,7 @@ Remember: This project is GNU GPL v3 and using it is at your own risk.
 
 ----
 
-With the findings of a guy from Polska, user pawelsky, it is now easy to connect the NAZA GPS to the MinimOSD.
+With the findings of a guy at rcgroups, user pawelsky, it is now easy to connect the NAZA GPS to the MinimOSD.
 
 No soldering at the NAZA GPS is necessary anymore, only an easy adaptor is needed, and some code of course.
 
@@ -24,6 +24,20 @@ I adapted his findings to my GPS_DJI parser code and you can use it by commentin
 
 
 Currently the heading is not tested and because of bad weather conditions no flight tests have been done.
+
+
+You can choose between GPS calculated heading and mag heading  by commenting/uncommenting in the OSD_DJI.h file:
+
+For GPS calculated heading:
+
+//#define DJI_HEADING_FROM_MAG
+
+For mag heading:
+
+#define DJI_HEADING_FROM_MAG
+
+But remember, both needs some further testing, heading value can be wrong currently.
+
 
 
 You can solder the adaptor like this:
@@ -45,7 +59,9 @@ But don't forget to insulate the 4 contacts using e.g. PlastiDip and heatshrink 
 
 ----
 
+
 ----
+
 
 ----
 
