@@ -3,6 +3,8 @@
 
 How to compile and flash arduino code is documented many times on the web.
 
+A good entry point for how to start with arduino and to compile the code is here: http://arduino.cc/en/Guide/HomePage
+
 A good entry point for how to flash the code is here: http://code.google.com/p/arducam-osd/wiki/Cfg_Update_Firmware
 
 But don't use their hex file of course, but compile the right one for minNAZAOSD.
