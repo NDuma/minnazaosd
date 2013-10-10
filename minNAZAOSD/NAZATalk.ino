@@ -26,7 +26,7 @@
 
 #ifdef PROTOCOL_NAZATALK
 
-#include "NAZATalk.h"
+#include "NazaTalk.h"
 
 
 #ifdef GPS_PROTOCOL_DJI
