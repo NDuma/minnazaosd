@@ -32,6 +32,9 @@
 #define NAZA_INT_H_
 
 
+//#define NAZA_INT_DEBUG
+
+
 #define THROTTLE_LOWEST			1100			// trim throttle lowest here
 #define THROTTLE_HIGHEST		1900			// trim throttle highest here
 
@@ -63,5 +66,12 @@ int16_t naza_screenswitch_get(void);
 
 int16_t naza_roll_get(void);
 int16_t naza_pitch_get(void);
+
+
+#ifdef NAZA_INT_DEBUG
+int16_t naza_throttle_us_get(void);
+int16_t naza_roll_us_get(void);
+int16_t naza_pitch_us_get(void);
+#endif // NAZA_INT_DEBUG
 
 #endif /* NAZA_INT_H_ */

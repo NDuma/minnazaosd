@@ -228,15 +228,17 @@ void naza_int_init(void)
 	PCattachInterrupt(PWM_PIN_SCREENSWITCH, int_screenswitch, CHANGE);
 	pinMode(PWM_PIN_GIMBAL_F1, INPUT);
 	PCattachInterrupt(PWM_PIN_GIMBAL_F1, int_gimbal_f1, CHANGE);
+#if 0	// TODO not working yet!!!
 	pinMode(PWM_PIN_GIMBAL_F2, INPUT);
 	PCattachInterrupt(PWM_PIN_GIMBAL_F2, int_gimbal_f2, CHANGE);
+#endif
 }
 
 
 // throttle in percent
 int16_t naza_throttle_get(void)
 {
-	return (int16_t) ((float) (throttle_pulse - THROTTLE_LOWEST) / (float) (THROTTLE_HIGHEST - THROTTLE_LOWEST)) * 100.0 + 0.5;
+	return constrain((int16_t)((float)(throttle_pulse - THROTTLE_LOWEST) / (float)(THROTTLE_HIGHEST - THROTTLE_LOWEST) * 100.0 + 0.5), 0, 100);
 }
 
 
@@ -259,3 +261,28 @@ int16_t naza_pitch_get(void)
 {
 	return (int16_t) (((int16_t) gimbal_f2_pulse - GIMBAL_PITCH_MIDDLE) * GIMBAL_PITCH_FACTOR);
 }
+
+
+#ifdef NAZA_INT_DEBUG
+
+// throttle  in micro seconds
+int16_t naza_throttle_us_get(void)
+{
+	return (int16_t) throttle_pulse;
+}
+
+
+// roll in micro seconds
+int16_t naza_roll_us_get(void)
+{
+	return (int16_t) gimbal_f1_pulse;
+}
+
+
+// pitch in micro seconds
+int16_t naza_pitch_us_get(void)
+{
+	return (int16_t) gimbal_f2_pulse;
+}
+
+#endif // NAZA_INT_DEBUG

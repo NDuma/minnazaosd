@@ -31,6 +31,10 @@ TODO:
 #include "NazaLed.h"
 #endif
 
+#ifdef NAZA_INT
+#include "NazaInt.h"
+#endif
+
 #if defined (SETUP_VOLT_DIFF_RATIO) || defined (SETUP_AMP_OFFSET) || defined (SETUP_AMP_PER_VOLT)
 #include "PWMRead.h"
 #endif
@@ -120,6 +124,17 @@ void writePanels() {
     if (setup_menu_active) {
         panSetup();
     } else {
+    
+#ifdef NAZA_INT_DEBUG
+	osd.setPanel(0, 2);
+	osd.openPanel();
+	osd.printf("t%5i|", naza_throttle_us_get());
+	osd.printf("s%5i|", naza_screenswitch_get());
+	osd.printf("r%5i|", naza_roll_us_get());
+	osd.printf("p%5i|", naza_pitch_us_get());
+	osd.closePanel();
+#endif
+
         if (ISd(0,Warn_BIT)) panWarn(panWarn_XY[0][0], panWarn_XY[1][0]);					// ever check/display warnings
         if (panel < npanels) {											// first or second panel
 	    // these GPS related panels are active under all circumstances
