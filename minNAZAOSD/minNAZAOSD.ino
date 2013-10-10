@@ -79,7 +79,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>
 #include "OSD_Func.h"
 
 #ifdef PROTOCOL_NAZATALK
-#include "NazaTalk.h"
+#include "NAZATalk.h"
 #endif
 
 #ifdef NAZA_LED
