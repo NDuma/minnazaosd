@@ -103,23 +103,10 @@ void startPanels() {
 void writePanels() {
 
 #if defined (SETUP_VOLT_DIFF_RATIO) || defined (SETUP_AMP_OFFSET) || defined (SETUP_AMP_PER_VOLT)
-	setup_menu_active = true;
+    setup_menu_active = true;
 #endif
 
-#ifdef JR_SPECIALS
-    // reset osd_home to current position when 2 TX switches are in a special position
-    if (osd_chan6_raw > PWM_HI && osd_chan7_raw < PWM_LO) {
-        osd_home_lat = osd_lat;
-        osd_home_lon = osd_lon;
-        osd_home_alt = osd_alt;
-        osd.setPanel(10, 3);
-        osd.openPanel();
-        osd.printf_P(PSTR("reset home"));
-        osd.closePanel();
-    } else if (ch_toggle > 3) switchPanels();									// switch panels
-#else
     if (ch_toggle > 3) switchPanels();										// switch panels
-#endif
 
     if (setup_menu_active) {
         panSetup();

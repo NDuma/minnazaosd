@@ -53,7 +53,6 @@
 #define LED_MODE_FS		0x20
 
 
-//#define NAZA_LED_PIN			1			// ADC1 is pin 24
 #define NAZA_LED_PIN			2			// ADC2 is pin 25
 
 
@@ -63,17 +62,9 @@
 #define NAZA_LED_POS_X			(panFMod_XY[0][panel] + 4)
 #define NAZA_LED_POS_Y			(panFMod_XY[1][panel])
 
-#if 0	// for version with additional 10k/4k7 voltage divider
-#define NAZA_THRESHOLD_YELLOW		110
-#define NAZA_THRESHOLD_RED		 70
-#define NAZA_THRESHOLD_GREEN		 30
-#endif
-
-#if 1
-#define NAZA_THRESHOLD_YELLOW		345
-#define NAZA_THRESHOLD_RED		220
-#define NAZA_THRESHOLD_GREEN		 95
-#endif
+#define NAZA_THRESHOLD_YELLOW		900
+#define NAZA_THRESHOLD_RED		550
+#define NAZA_THRESHOLD_GREEN		250
 
 #define NAZA_CHAR_OFF			0x00
 #define NAZA_CHAR_GOT_HOME		0xF7

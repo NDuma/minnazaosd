@@ -45,18 +45,15 @@
 #define GIMBAL_PITCH_FACTOR		0.1			// trim the horizon pitch alignment here
 
 
+#define PWM_PIN_GIMBAL_F2		4			// use pin  2 = PD4 = PCINT20	for gimbal F2
+#define PWM_PIN_THROTTLE		7			// use pin 11 = PD7 = PCINT23	for throttle
+#define PWM_PIN_SCREENSWITCH		8			// use pin 12 = PB0 = PCINT0	for screen switching
+#define PWM_PIN_GIMBAL_F1		9			// use pin 13 = PB1 = PCINT1	for gimbal F1
 
-
-#define PWM_PIN_THROTTLE		7
-#define PWM_PIN_SCREENSWITCH		8
-#define PWM_PIN_GIMBAL_F1		9
-#define PWM_PIN_GIMBAL_F2		10
-
-
+#define PIN_READ_GIMBAL_F2		(PIND & 0b00010000)	// faster than digitalRead
 #define PIN_READ_THROTTLE		(PIND & 0b10000000)	// faster than digitalRead
 #define PIN_READ_SCREENSWITCH		(PINB & 0b00000001)	// faster than digitalRead
 #define PIN_READ_GIMBAL_F1		(PINB & 0b00000010)	// faster than digitalRead
-#define PIN_READ_GIMBAL_F2		(PINB & 0b00000100)	// faster than digitalRead
 
 
 void naza_int_init(void);

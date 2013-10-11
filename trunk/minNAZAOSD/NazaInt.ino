@@ -27,11 +27,6 @@
 
 // !!! For using this, you have to solder a little bit on the MinimOSD !!!
 
-// use PCINT23	PD7	for throttle
-// use PCINT0	PB0	for screen switching
-// use PCINT1	PB1	for gimbal F1
-// use PCINT2	PB2	for gimbal F2
-
 
 #include "NazaInt.h"
 
@@ -228,10 +223,8 @@ void naza_int_init(void)
 	PCattachInterrupt(PWM_PIN_SCREENSWITCH, int_screenswitch, CHANGE);
 	pinMode(PWM_PIN_GIMBAL_F1, INPUT);
 	PCattachInterrupt(PWM_PIN_GIMBAL_F1, int_gimbal_f1, CHANGE);
-#if 0	// TODO not working yet!!!
 	pinMode(PWM_PIN_GIMBAL_F2, INPUT);
 	PCattachInterrupt(PWM_PIN_GIMBAL_F2, int_gimbal_f2, CHANGE);
-#endif
 }
 
 
