@@ -35,8 +35,7 @@
 #define NAZA_LED
 
 // JRChange: DJI Naza interrupt features like artificial horizon and RC-RX readings:
-// untested !!!
-//#define NAZA_INT
+#define NAZA_INT
 
 // JRChange: Flight Batt on MinimOSD:
 #define FLIGHT_BATT_ON_MINIMOSD

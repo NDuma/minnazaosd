@@ -146,9 +146,9 @@ char naza_led_char(void)
 void naza_led_show(int first_col, int first_line)
 {
 #ifdef LED_FIND_VALUES
-	osd.setPanel(first_col, first_line);
+	osd.setPanel(0, 6);
 	osd.openPanel();
-	osd.printf("%4u", analogRead(NAZA_LED_PIN));
+	osd.printf("l%5i", analogRead(NAZA_LED_PIN));
 	osd.closePanel();
 #else
 	static unsigned long sample_timer = 0;
