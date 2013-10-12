@@ -256,7 +256,7 @@ int16_t naza_pitch_get(void)
 }
 
 
-#ifdef NAZA_INT_DEBUG
+#if defined (SETUP_TS) || defined (NAZA_INT_DEBUG)
 
 // throttle  in micro seconds
 int16_t naza_throttle_us_get(void)
