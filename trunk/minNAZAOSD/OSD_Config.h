@@ -6,8 +6,10 @@
 // Only devs should increment this
 #define VER 75
 
+// to generate the calibration software for using with throttle and screenswitch
+//#define SETUP_TS
 
-// to generate the three needed calibration software versions
+// to generate the three needed calibration software versions if you don't have throttle and screenswitch
 //#define SETUP_VOLT_DIFF_RATIO
 //#define SETUP_AMP_OFFSET
 //#define SETUP_AMP_PER_VOLT

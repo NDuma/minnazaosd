@@ -31,7 +31,7 @@ TODO:
 #include "NazaLed.h"
 #endif
 
-#ifdef NAZA_INT
+#if defined (NAZA_INT) || defined (SETUP_TS)
 #include "NazaInt.h"
 #endif
 
@@ -41,6 +41,7 @@ TODO:
 
 
 #define PWM_LO			1200	// [us]	PWM low value
+#define PWM_MI			1500	// [us]	PWM middle value
 #define PWM_HI			1800	// [us]	PWM high value
 #define PWM_OFFSET		100	// [us]	PWM offset for detecting stick movement
 
@@ -102,7 +103,7 @@ void startPanels() {
 /******************************************************************/
 void writePanels() {
 
-#if defined (SETUP_VOLT_DIFF_RATIO) || defined (SETUP_AMP_OFFSET) || defined (SETUP_AMP_PER_VOLT)
+#if defined (SETUP_TS) || defined (SETUP_VOLT_DIFF_RATIO) || defined (SETUP_AMP_OFFSET) || defined (SETUP_AMP_PER_VOLT)
     setup_menu_active = true;
 #endif
 
@@ -404,22 +405,31 @@ void panSetup() {
 	osd.printf("volt div ratio:  %5i|", volt_div_ratio);
 	osd.printf("amp offset:      %5i|", curr_amp_offset);
 	osd.printf("amp per volt:    %5i|||", curr_amp_per_volt);
+	
+#ifdef SETUP_TS
+	chan1_raw_middle = PWM_MI;
+	chan2_raw_middle = PWM_MI;
+	chan1_raw = naza_throttle_us_get();
+	chan2_raw = naza_screenswitch_get();
+#endif
 
+#if defined (SETUP_VOLT_DIFF_RATIO) || defined (SETUP_AMP_OFFSET) || defined (SETUP_AMP_PER_VOLT)
         if (chan1_raw_middle == 0 || chan2_raw_middle == 0) {
             chan1_raw_middle = pwm_get();
             chan2_raw_middle = pwm_get();
         }
 	
 	chan1_raw = pwm_get();
-	
+#endif
+
 #ifdef SETUP_VOLT_DIFF_RATIO
-	chan2_raw = 1300;		// TODO use pwm_get_x() for a second RC channel when available
+	chan2_raw = 1300;
 #endif
 #ifdef SETUP_AMP_OFFSET
-	chan2_raw = 1500;		// TODO use pwm_get_x() for a second RC channel when available
+	chan2_raw = 1500;
 #endif
 #ifdef SETUP_AMP_PER_VOLT
-	chan2_raw = 1700;		// TODO use pwm_get_x() for a second RC channel when available
+	chan2_raw = 1700;
 #endif
 
              if ((chan1_raw + 3*PWM_OFFSET) < chan1_raw_middle ) delta = -100;

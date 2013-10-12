@@ -86,7 +86,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>
 #include "NazaLed.h"
 #endif
 
-#ifdef NAZA_INT
+#if defined (NAZA_INT) || defined (SETUP_TS)
 #include "NazaInt.h"
 #endif
 
@@ -213,7 +213,7 @@ void setup()
     naza_led_init();
 #endif
 
-#ifdef NAZA_INT
+#if defined (NAZA_INT) || defined (SETUP_TS)
     naza_int_init();
 #endif
 
