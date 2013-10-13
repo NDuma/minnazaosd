@@ -31,6 +31,9 @@
 #include "NazaInt.h"
 
 
+//#define NAZA_INT_MINIMAL
+
+
 // see http://playground.arduino.cc/Main/PcInt
 
 #include "pins_arduino.h"
@@ -61,13 +64,13 @@ volatile uint8_t *port_to_pcmask[] = {
   &PCMSK2
 };
 
-static int PCintMode[24];
-
-typedef void (*voidFuncPtr)(void);
-
-volatile static voidFuncPtr PCintFunc[24] = { NULL };
-
 volatile static uint8_t PCintLast[3];
+
+#ifndef NAZA_INT_MINIMAL
+static int PCintMode[24];
+typedef void (*voidFuncPtr)(void);
+volatile static voidFuncPtr PCintFunc[24] = { NULL };
+#endif
 
 /*
  * attach an interrupt to a specific pin using pin change interrupts.
@@ -75,7 +78,6 @@ volatile static uint8_t PCintLast[3];
  void PCattachInterrupt(uint8_t pin, void (*userFunc)(void), int mode) {
   uint8_t bit = digitalPinToBitMask(pin);
   uint8_t port = digitalPinToPort(pin);
-  uint8_t slot;
   volatile uint8_t *pcmask;
 
   // map pin to PCIR register
@@ -87,6 +89,8 @@ volatile static uint8_t PCintLast[3];
     pcmask = port_to_pcmask[port];
   }
 
+#ifndef NAZA_INT_MINIMAL
+  uint8_t slot;
 // -- Fix by Baziki. In the original sources it was a little bug, which cause analog ports to work incorrectly.
   if (port == 1) {
      slot = port * 8 + (pin - 14);
@@ -97,6 +101,8 @@ volatile static uint8_t PCintLast[3];
 // --Fix end
   PCintMode[slot] = mode;
   PCintFunc[slot] = userFunc;
+#endif
+
   // set the mask
   *pcmask |= bit;
   // enable the interrupt
@@ -130,19 +136,26 @@ void PCdetachInterrupt(uint8_t pin) {
 // common code for isr handler. "port" is the PCINT number.
 // there isn't really a good way to back-map ports and masks to pins.
 static void PCint(uint8_t port) {
-  uint8_t bit;
   uint8_t curr;
   uint8_t mask;
-  uint8_t pin;
 
   // get the pin states for the indicated port.
   curr = *portInputRegister(port+2);
   mask = curr ^ PCintLast[port];
   PCintLast[port] = curr;
-  // mask is pins that have changed. screen out non pcint pins.
+  // mask the pins that have changed. screen out non pcint pins.
   if ((mask &= *port_to_pcmask[port]) == 0) {
     return;
   }
+#ifdef NAZA_INT_MINIMAL
+  // only check used interrupts of the ports
+  if (CALL_CHECK_GIMBAL_F1)	int_gimbal_f1();
+  if (CALL_CHECK_GIMBAL_F2)	int_gimbal_f2();
+  if (CALL_CHECK_THROTTLE)	int_throttle();
+  if (CALL_CHECK_SCREENSWITCH)	int_screenswitch();
+#else
+  uint8_t bit;
+  uint8_t pin;
   // mask is pcint pins that have changed.
   for (uint8_t i=0; i < 8; i++) {
     bit = 0x01 << i;
@@ -158,6 +171,7 @@ static void PCint(uint8_t port) {
       }
     }
   }
+#endif
 }
 
 SIGNAL(PCINT0_vect) {
