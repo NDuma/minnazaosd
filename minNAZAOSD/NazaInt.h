@@ -55,6 +55,11 @@
 #define PIN_READ_SCREENSWITCH		(PINB & 0b00000001)	// faster than digitalRead
 #define PIN_READ_GIMBAL_F1		(PINB & 0b00000010)	// faster than digitalRead
 
+#define CALL_CHECK_GIMBAL_F2		(port == 2 && mask & 0b00010000)	// call check macro
+#define CALL_CHECK_THROTTLE		(port == 2 && mask & 0b10000000)	// call check macro
+#define CALL_CHECK_SCREENSWITCH		(port == 0 && mask & 0b00000001)	// call check macro
+#define CALL_CHECK_GIMBAL_F1		(port == 0 && mask & 0b00000010)	// call check macro
+
 
 void naza_int_init(void);
 
