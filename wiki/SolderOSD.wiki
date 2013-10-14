@@ -64,7 +64,17 @@ The software realization for the gimbal F1/F2, screenswitch and throttle is not 
 
 ----
 
-Here are some pictures of one of many ways doing the soldering.
+Here are some pictures of one of many ways doing the advanced and insane soldering.
+
+You need this only when you like to use the advanced and/or insane stage of the minNAZAOSD!
+
+I started with the insane soldering and relaxed a little doing the advanced stuff afterwards ;-)
+
+The insane soldering is insane because 3 pins are side by side and the chip has a pin pitch of only 0.8mm.
+
+The advanced soldering is just advanced because the pins are not side by side.
+
+Especially the LED adaptor and RSSI pin is not so advanced because they are at the edge of the chip, almost easy ;-)
 
 
 http://minnazaosd.googlecode.com/svn/wiki/images/Solder_001.jpg
