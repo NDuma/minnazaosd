@@ -74,3 +74,9 @@ http://minnazaosd.googlecode.com/svn/wiki/images/Solder_002.jpg
 http://minnazaosd.googlecode.com/svn/wiki/images/Solder_003.jpg
 
 http://minnazaosd.googlecode.com/svn/wiki/images/Solder_004.jpg
+
+http://minnazaosd.googlecode.com/svn/wiki/images/Solder_005.jpg
+
+http://minnazaosd.googlecode.com/svn/wiki/images/Solder_010.jpg
+
+http://minnazaosd.googlecode.com/svn/wiki/images/Solder_011.jpg

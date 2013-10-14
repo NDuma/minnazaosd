@@ -54,9 +54,9 @@ With the insane version you need some insane soldering at the MinimOSD.
 
 With that you add the following:
 
- * Artificial horizon (in development, not tested yet)
- * Screen switching (in development, not tested yet)
- * Throttle percentage (in development, not tested yet)
+ * Artificial horizon
+ * Screen switching
+ * Throttle percentage
 
 Connection and solder diagram (necessary soldering in blue):
 
