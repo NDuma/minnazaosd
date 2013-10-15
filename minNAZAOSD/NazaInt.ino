@@ -31,7 +31,7 @@
 #include "NazaInt.h"
 
 
-//#define NAZA_INT_MINIMAL
+#define NAZA_INT_MINIMAL
 
 
 // see http://playground.arduino.cc/Main/PcInt
