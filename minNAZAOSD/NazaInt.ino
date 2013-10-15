@@ -232,12 +232,19 @@ void int_gimbal_f2(void) {
 void naza_int_init(void)
 {
 	pinMode(PWM_PIN_THROTTLE, INPUT);
+	digitalWrite(PWM_PIN_THROTTLE, HIGH);				// turn on pullup resistor
 	PCattachInterrupt(PWM_PIN_THROTTLE, int_throttle, CHANGE);
+	
 	pinMode(PWM_PIN_SCREENSWITCH, INPUT);
+	digitalWrite(PWM_PIN_SCREENSWITCH, HIGH);			// turn on pullup resistor
 	PCattachInterrupt(PWM_PIN_SCREENSWITCH, int_screenswitch, CHANGE);
+	
 	pinMode(PWM_PIN_GIMBAL_F1, INPUT);
+	digitalWrite(PWM_PIN_GIMBAL_F1, HIGH);				// turn on pullup resistor
 	PCattachInterrupt(PWM_PIN_GIMBAL_F1, int_gimbal_f1, CHANGE);
+	
 	pinMode(PWM_PIN_GIMBAL_F2, INPUT);
+	digitalWrite(PWM_PIN_GIMBAL_F2, HIGH);				// turn on pullup resistor
 	PCattachInterrupt(PWM_PIN_GIMBAL_F2, int_gimbal_f2, CHANGE);
 }
 
