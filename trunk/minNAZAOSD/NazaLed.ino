@@ -164,10 +164,12 @@ void naza_led_show(int first_col, int first_line)
 	
 	if (old_led != led) {
 		old_led = led;
-		osd.setPanel(first_col, first_line);
-		osd.openPanel();
-		osd.printf("%c", led == NAZA_CHAR_OFF && mode & LED_MODE_GOT_HOME_POINT ? NAZA_CHAR_GOT_HOME : led);
-		osd.closePanel();
+		if (panel < npanels) {
+			osd.setPanel(first_col, first_line);
+			osd.openPanel();
+			osd.printf("%c", led == NAZA_CHAR_OFF && mode & LED_MODE_GOT_HOME_POINT ? NAZA_CHAR_GOT_HOME : led);
+			osd.closePanel();
+		}
 	}
 #endif
 }
