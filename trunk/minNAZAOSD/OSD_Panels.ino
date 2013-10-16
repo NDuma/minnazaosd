@@ -104,7 +104,8 @@ void startPanels() {
 void writePanels() {
 
 #if defined (SETUP_TS) || defined (SETUP_VOLT_DIFF_RATIO) || defined (SETUP_AMP_OFFSET) || defined (SETUP_AMP_PER_VOLT)
-    setup_menu_active = true;
+    panSetup();
+    return;
 #endif
 
     if (ch_toggle > 3) switchPanels();										// switch panels
