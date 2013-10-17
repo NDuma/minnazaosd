@@ -188,7 +188,7 @@ SIGNAL(PCINT2_vect) {
 
 
 volatile long throttle_start;				// start time
-volatile long throttle_pulse		= 1100;		// pulse duration
+volatile long throttle_pulse		= 1500;		// pulse duration
 
 volatile long screenswitch_start;			// start time
 volatile long screenswitch_pulse	= 1100;		// pulse duration
