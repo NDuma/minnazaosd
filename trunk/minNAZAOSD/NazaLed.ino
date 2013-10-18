@@ -153,6 +153,7 @@ void naza_led_show(int first_col, int first_line)
 #else
 	static unsigned long sample_timer = 0;
 	static char old_led = NAZA_CHAR_OFF;
+	static uint8_t redraw_cnt = 0;
 	char led;
 	uint8_t mode;
 	
@@ -161,8 +162,10 @@ void naza_led_show(int first_col, int first_line)
 	led = naza_led_char();
 	mode = get_mode(led);
 	osd_mode = mode & ~LED_MODE_GOT_HOME_POINT;
+	redraw_cnt++;
 	
-	if (old_led != led) {
+	if (old_led != led || redraw_cnt > (LED_REDRAW_TIME / LED_SAMPLE_TIME)) {
+		redraw_cnt = 0;
 		old_led = led;
 		if (panel < npanels) {
 			osd.setPanel(first_col, first_line);
