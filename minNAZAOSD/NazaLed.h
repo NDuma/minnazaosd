@@ -43,6 +43,7 @@
 
 #define LED_SAMPLE_TIME		5
 #define LED_SAMPLES		2
+#define LED_REDRAW_TIME		100
 
 #define LED_MODE_UNKNOWN	0x00
 #define LED_MODE_GOT_HOME_POINT	0x01
