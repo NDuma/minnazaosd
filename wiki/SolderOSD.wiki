@@ -88,3 +88,11 @@ http://minnazaosd.googlecode.com/svn/wiki/images/Solder_005.jpg
 http://minnazaosd.googlecode.com/svn/wiki/images/Solder_010.jpg
 
 http://minnazaosd.googlecode.com/svn/wiki/images/Solder_011.jpg
+
+----
+
+Here is the minNAZAOSD ready soldered, completely connected and mounted in my test-copter:
+
+http://minnazaosd.googlecode.com/svn/wiki/images/Mounted_001.jpg
+
+http://minnazaosd.googlecode.com/svn/wiki/images/Mounted_002.jpg
