@@ -34,6 +34,16 @@ and on the ArduCamOSD code: http://code.google.com/p/arducam-osd/
 
 ----
 
+Example link to OSD hardware:
+
+http://www.goodluckbuy.com/on-screen-display-osd-board-minimosd-apm-telemetry-to-apm-1-and-apm-2.html
+
+Example link to voltage/current sensor:
+
+http://www.goodluckbuy.com/crius-v-i-sensor-voltage-and-current-sensor-50v-90a-compatible-with-attopilot.html
+
+----
+
 By the way:
 
 When using it with only a GPS connected (UBX tested, NMEA not tested) it's usable as a cheap standalone OSD independent of the flight-controller or kind of UAV...

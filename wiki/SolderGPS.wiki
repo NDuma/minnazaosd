@@ -23,10 +23,7 @@ I adapted his findings to my GPS_DJI parser code and you can use it by commentin
 //#define GPS_PROTOCOL_UBX
 
 
-Currently the heading is not tested and because of bad weather conditions no flight tests have been done.
-
-
-You can choose between GPS calculated heading and mag heading  by commenting/uncommenting in the OSD_DJI.h file:
+You can choose between GPS calculated heading and mag heading by commenting/uncommenting in the OSD_DJI.h file:
 
 For GPS calculated heading:
 
@@ -36,7 +33,7 @@ For mag heading:
 
 #define DJI_HEADING_FROM_MAG
 
-But remember, both needs some further testing, heading value can be wrong currently.
+But the mag heading currently is not correctly working and needs some further testing!
 
 
 
