@@ -151,9 +151,13 @@ static void PCint(uint8_t port) {
   // only check used interrupts of the ports
   if (CALL_CHECK_GIMBAL_F1)	int_gimbal_f1();
   if (CALL_CHECK_GIMBAL_F2)	int_gimbal_f2();
+#ifdef USE_SUM_SIGNAL
+  if (CALL_CHECK_SUM)		int_sum();
+#else // USE_SUM_SIGNAL
   if (CALL_CHECK_THROTTLE)	int_throttle();
   if (CALL_CHECK_SCREENSWITCH)	int_screenswitch();
-#else
+#endif // USE_SUM_SIGNAL
+#else // NAZA_INT_MINIMAL
   uint8_t bit;
   uint8_t pin;
   // mask is pcint pins that have changed.
@@ -171,7 +175,7 @@ static void PCint(uint8_t port) {
       }
     }
   }
-#endif
+#endif // NAZA_INT_MINIMAL
 }
 
 SIGNAL(PCINT0_vect) {
@@ -200,6 +204,32 @@ volatile long gimbal_f2_start;				// start time
 volatile long gimbal_f2_pulse		= 1500;		// pulse duration
 
 
+#ifdef USE_SUM_SIGNAL
+volatile long sum_start;				// start time
+
+// thanks to der Frickler for his sum signal code
+void int_sum(void) {
+	static uint8_t sum_chan_nr = 1;
+	long sum_pulse;
+	
+	if (PIN_READ_SUM) {				// positive edge
+            sum_pulse = micros() - sum_start;		// calculate pulsewidth
+	    sum_start = micros();			// restart
+
+            if (sum_pulse > 3000 || sum_chan_nr > 14) {
+                sum_chan_nr = 1;
+            } else {
+                if (sum_chan_nr == SUM_CH_THROTTLE)
+			throttle_pulse = sum_pulse;
+                else if (sum_chan_nr == SUM_CH_SCREENSWITCH)
+			screenswitch_pulse = sum_pulse;
+                sum_chan_nr++;
+            }
+        }
+}
+
+#else // USE_SUM_SIGNAL
+
 void int_throttle(void) {
 	if (PIN_READ_THROTTLE)
 		throttle_start = micros();				// positive edge: start
@@ -213,6 +243,9 @@ void int_screenswitch(void) {
 	else
 		screenswitch_pulse = micros() - screenswitch_start;	// negative edge: calculate pulsewidth
 }
+
+#endif // USE_SUM_SIGNAL
+
 
 void int_gimbal_f1(void) {
 	if (PIN_READ_GIMBAL_F1)
@@ -231,18 +264,28 @@ void int_gimbal_f2(void) {
 
 void naza_int_init(void)
 {
+#ifdef USE_SUM_SIGNAL
+	pinMode(PWM_PIN_THROTTLE, INPUT);
+	digitalWrite(PWM_PIN_THROTTLE, HIGH);				// turn on pullup resistor
+	pinMode(PWM_PIN_SCREENSWITCH, INPUT);
+	digitalWrite(PWM_PIN_SCREENSWITCH, HIGH);			// turn on pullup resistor
+	pinMode(PWM_PIN_SUM, INPUT);
+	digitalWrite(PWM_PIN_SUM, HIGH);				// turn on pullup resistor
+	PCattachInterrupt(PWM_PIN_SUM, int_sum, CHANGE);
+#else // USE_SUM_SIGNAL
 	pinMode(PWM_PIN_THROTTLE, INPUT);
 	digitalWrite(PWM_PIN_THROTTLE, HIGH);				// turn on pullup resistor
 	PCattachInterrupt(PWM_PIN_THROTTLE, int_throttle, CHANGE);
-	
+
 	pinMode(PWM_PIN_SCREENSWITCH, INPUT);
 	digitalWrite(PWM_PIN_SCREENSWITCH, HIGH);			// turn on pullup resistor
 	PCattachInterrupt(PWM_PIN_SCREENSWITCH, int_screenswitch, CHANGE);
-	
+#endif // USE_SUM_SIGNAL
+
 	pinMode(PWM_PIN_GIMBAL_F1, INPUT);
 	digitalWrite(PWM_PIN_GIMBAL_F1, HIGH);				// turn on pullup resistor
 	PCattachInterrupt(PWM_PIN_GIMBAL_F1, int_gimbal_f1, CHANGE);
-	
+
 	pinMode(PWM_PIN_GIMBAL_F2, INPUT);
 	digitalWrite(PWM_PIN_GIMBAL_F2, HIGH);				// turn on pullup resistor
 	PCattachInterrupt(PWM_PIN_GIMBAL_F2, int_gimbal_f2, CHANGE);
