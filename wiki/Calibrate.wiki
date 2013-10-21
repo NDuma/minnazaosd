@@ -1,9 +1,28 @@
 = How to calibrate voltage/current measurement =
 
 
-As the software realization for the screenswitch and throttle is not ready yet, you need a temporary way to calibrate the voltage/current measurement.
+If you have soldered the screenswitch and throttle cables doing the insane soldering you can use the screenswitch and throttle for calibrating the voltage/current measurement.
+
+You have to compile a special hex files to calibrate the voltage, the current offset and the current itself.
+
+To generate this hex file uncomment the following #define and compile the code.
+
+// to generate the calibration software for using with throttle and screenswitch
+
+//#define SETUP_TS
 
 ----
+
+After that, load this hex for calibrating the voltage, the current offset and the current itself.
+
+----
+
+Don't forget to load a hex file compiled with the option disabled after calibration is ready.
+
+----
+----
+
+If you don't have soldered the screenswitch and throttle cables, you need another way to calibrate the voltage/current measurement.
 
 You need to solder one additional cable at the bottom of the minNAZAOSD as shown here:
 
