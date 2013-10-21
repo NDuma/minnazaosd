@@ -45,15 +45,34 @@
 #define GIMBAL_PITCH_FACTOR		0.1			// trim the horizon pitch alignment here
 
 
-#define PWM_PIN_GIMBAL_F2		4			// use pin  2 = PD4 = PCINT20	for gimbal F2
-#define PWM_PIN_THROTTLE		7			// use pin 11 = PD7 = PCINT23	for throttle
-#define PWM_PIN_SCREENSWITCH		8			// use pin 12 = PB0 = PCINT0	for screen switching
-#define PWM_PIN_GIMBAL_F1		9			// use pin 13 = PB1 = PCINT1	for gimbal F1
+// uncomment to use sum-signal instead of single channels
+//#define USE_SUM_SIGNAL
 
-#define PIN_READ_GIMBAL_F2		(PIND & 0b00010000)	// faster than digitalRead
-#define PIN_READ_THROTTLE		(PIND & 0b10000000)	// faster than digitalRead
-#define PIN_READ_SCREENSWITCH		(PINB & 0b00000001)	// faster than digitalRead
-#define PIN_READ_GIMBAL_F1		(PINB & 0b00000010)	// faster than digitalRead
+// set your channel layout
+#define SUM_CH_THROTTLE			3					// throttle channel
+#define SUM_CH_SCREENSWITCH		8					// screenswitch channel
+
+// choose your set for sum-signal
+#if 0
+#define PWM_PIN_SUM			7					// use pin 11 = PD7 = PCINT23
+#define PIN_READ_SUM			(PIND & 0b10000000)			// faster than digitalRead
+#define CALL_CHECK_SUM			(port == 2 && mask & 0b10000000)	// call check macro
+#else
+#define PWM_PIN_SUM			8					// use pin 12 = PB0 = PCINT0
+#define PIN_READ_SUM			(PINB & 0b00000001)			// faster than digitalRead
+#define CALL_CHECK_SUM			(port == 0 && mask & 0b00000001)	// call check macro
+#endif
+
+
+#define PWM_PIN_GIMBAL_F2		4					// use pin  2 = PD4 = PCINT20	for gimbal F2
+#define PWM_PIN_THROTTLE		7					// use pin 11 = PD7 = PCINT23	for throttle
+#define PWM_PIN_SCREENSWITCH		8					// use pin 12 = PB0 = PCINT0	for screen switching
+#define PWM_PIN_GIMBAL_F1		9					// use pin 13 = PB1 = PCINT1	for gimbal F1
+
+#define PIN_READ_GIMBAL_F2		(PIND & 0b00010000)			// faster than digitalRead
+#define PIN_READ_THROTTLE		(PIND & 0b10000000)			// faster than digitalRead
+#define PIN_READ_SCREENSWITCH		(PINB & 0b00000001)			// faster than digitalRead
+#define PIN_READ_GIMBAL_F1		(PINB & 0b00000010)			// faster than digitalRead
 
 #define CALL_CHECK_GIMBAL_F2		(port == 2 && mask & 0b00010000)	// call check macro
 #define CALL_CHECK_THROTTLE		(port == 2 && mask & 0b10000000)	// call check macro
