@@ -1,8 +1,30 @@
 = How to load the char file =
 
 
-After you flashed the hex file and power cycled the MinimOSD you have to load the matching char file.
+As the config tool uses 57k6 baud for char file upload you need to load a firmware which also uses 57k6 baud.
 
-How to do so is explained here: http://code.google.com/p/arducam-osd/wiki/Cfg_Update_CharSet
+The firmware baud rate depends on the GPS version you like to use.
+
+The GPS_PROTOCOL_DJI uses 115k2 baud
+
+The GPS_PROTOCOL_UBX uses 57k6 baud.
+
+So, prior to char set upload, build and upload the firmware for the UBX GPS configuring the defines as in the following:
+
+//#define GPS_PROTOCOL_DJI
+
+#define GPS_PROTOCOL_UBX
+
+After that firmware upload, do the char file upload.
+
+How to upload the char file is explained here: http://code.google.com/p/arducam-osd/wiki/Cfg_Update_CharSet
 
 Get the special minNAZAOSD MCM file from my code section trunk/configs
+
+After char file upload, choose the GPS protocol you like e.g. the DJI protocol like:
+
+#define GPS_PROTOCOL_DJI
+
+//#define GPS_PROTOCOL_UBX
+
+and build and upload this firmware.
