@@ -89,7 +89,6 @@ TinyGPS gps;
 //
 //----------------------------------------------------------------------------------
 int nazatalk_read(void) {
-	static uint8_t gps_seen = 0;
 	static uint8_t crlf_count = 0;
 	int ret = 0;
 	
@@ -118,7 +117,7 @@ int nazatalk_read(void) {
 #endif
 		
 		// needed for MinimOSD char set upload
-		if (!gps_seen && millis() < 20000 && millis() > 5000) {
+		if (!osd_got_home && millis() < 20000 && millis() > 5000) {
 			if (c == '\n' || c == '\r') {
 				crlf_count++;
 			} else {
@@ -131,7 +130,6 @@ int nazatalk_read(void) {
 		
 #ifdef GPS_PROTOCOL_DJI
 		if (parse_dji(c) == PARSER_COMPLETE_SET) {
-			gps_seen = 1;
 			osd_fix_type		= get_dji_status();
 			osd_satellites_visible	= get_dji_satellites();
 			osd_lat			= get_dji_latitude();
@@ -145,7 +143,6 @@ int nazatalk_read(void) {
 		
 #ifdef GPS_PROTOCOL_UBX
 		if (parse_ubx(c) == PARSER_COMPLETE_SET) {
-			gps_seen = 1;
 			osd_fix_type		= get_ubx_status();
 			osd_satellites_visible	= get_ubx_satellites();
 			osd_lat			= get_ubx_latitude();
@@ -162,7 +159,6 @@ int nazatalk_read(void) {
 		unsigned long fix_age;
 	
 		if (gps.encode(c)) {		// process new gps info
-			gps_seen = 1;
 			
 			gps.get_position(&lat, &lon, &fix_age);
 			osd_lat			= lat / 1000000.0;
