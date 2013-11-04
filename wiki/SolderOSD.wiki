@@ -6,13 +6,13 @@ Remember: This project is GNU GPL v3 and using it is at your own risk.
 
 ----
 
-Since I own the old version V0.1 of the MinimOSD with the heating problem, I first of all desoldered the capacitor to isolate the 12V from the OSD and powered it from the 5V side.
+Since I own the old version V0.1 of the MinimOSD with the heating problem, I first of all desoldered the diode to isolate the 12V from the OSD and powered it from the 5V side.
 
 In the following two pictures you can see how to do so.
 
 Shown above is an unsoldered MinimOSD and below a soldered MinimOSD.
 
-Desolder the capacitor (red rectangle) to isolate the 12V from the OSD.
+Desolder the diode (red rectangle) to isolate the 12V from the OSD.
 
 Solder the two solder jumper (green rectangles) to powered the MAX7456 chip from the 5V side.
 
