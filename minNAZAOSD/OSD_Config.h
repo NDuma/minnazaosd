@@ -6,6 +6,13 @@
 // Only devs should increment this
 #define VER 75
 
+// choose user defined OSD white level
+// 	set 0 for 120%
+// 	set 1 for 100%
+// 	set 2 for  90%
+// 	set 3 for  80%
+#define OSD_WHITE_LEVEL		1
+
 // to generate the calibration software for using with throttle and screenswitch
 //#define SETUP_TS
 

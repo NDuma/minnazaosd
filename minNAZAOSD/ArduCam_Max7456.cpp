@@ -43,11 +43,15 @@ void OSD::init()
   Spi.transfer(osdbl_w);
 
   // set all rows to same character white level of 100%
-  int lines = (video_mode == MAX7456_MODE_MASK_PAL) ? 16 : 13;
-  for (x = 0; x < lines; x++)
+  int lines = (video_mode == MAX7456_MODE_MASK_PAL) ? 15 : 13;
+  for (x = 0; x <= lines; x++)
   {
     Spi.transfer(x + 0x10);
+#ifdef OSD_WHITE_LEVEL
+    Spi.transfer(OSD_WHITE_LEVEL);
+#else
     Spi.transfer(MAX7456_WHITE_level_100);
+#endif
   }
   // define sync (auto,int,ext) and
   // making sure the Max7456 is enabled
