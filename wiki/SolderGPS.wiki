@@ -35,7 +35,13 @@ For mag heading:
 
 But the mag heading currently is not correctly working and needs some further testing!
 
+----
 
+If you are using the NAZA-M or NAZA-M Lite then connect the adaptor directly to the NAZA Main Controller EXP port.
+
+If you are using the NAZA-M V2 then connect the adaptor to the NAZA PMU V2 GPS port.
+
+----
 
 You can solder the adaptor like this:
 
