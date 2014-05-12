@@ -22,7 +22,7 @@ Only do this if you have some good soldering skills, especially soldering direct
 
 Also only do this if you have the knowledge of what you are doing.
 
-If you do not have both, please use the DJI iOSD or the FBOSD.
+If you do not have both, please use the DJI iOSD.
 
 Bad soldering or less knowledge can risk your aerial vehicle and even lives! 
 
@@ -41,6 +41,12 @@ http://www.goodluckbuy.com/on-screen-display-osd-board-minimosd-apm-telemetry-to
 Example link to voltage/current sensor:
 
 http://www.goodluckbuy.com/crius-v-i-sensor-voltage-and-current-sensor-50v-90a-compatible-with-attopilot.html
+
+----
+
+An erroneous PDF from some other guy exists in the depth of the web, but caution:
+
+It shows wrong wiring. So don't use it, use your own brain, or use the DJI iOSD!
 
 ----
 
